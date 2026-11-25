@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#245da8">
+  <title>إعدادية ميسان للبنين</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="logo">🎓</div>
+    <h1>إعدادية ميسان للبنين</h1>
+    <p>بوابة الطالب والمدرس — الجدول، الامتحانات، والدردشة</p>
+  </header>
+
+  <main class="shell">
+    <section id="auth" class="card auth-card">
+      <div class="tabs">
+        <button class="tab active" data-tab="login">تسجيل الدخول</button>
+        <button class="tab" data-tab="register">إنشاء حساب</button>
+        <button class="tab" data-tab="teacher">مدرس</button>
+      </div>
+
+      <form id="login" class="form tab-panel">
+        <h2>أهلاً بعودتك</h2>
+        <label>البريد الإلكتروني<input type="email" id="loginEmail" placeholder="name@example.com" required></label>
+        <label>كلمة المرور<input type="password" id="loginPassword" placeholder="كلمة المرور" required></label>
+        <button class="primary" type="submit">دخول</button>
+      </form>
+
+      <form id="register" class="form tab-panel hidden">
+        <h2>إنشاء حساب طالب</h2>
+        <label>الاسم الكامل<input id="studentName" required placeholder="اكتب اسمك"></label>
+        <label>البريد الإلكتروني<input type="email" id="studentEmail" required placeholder="name@example.com"></label>
+        <label>كلمة المرور<input type="password" id="studentPassword" minlength="6" required placeholder="6 أحرف على الأقل"></label>
+        <label>الصف
+          <select id="studentGrade"><option>الأول متوسط</option><option>الثاني متوسط</option><option>الثالث متوسط</option><option>الرابع الإعدادي</option><option>الخامس الإعدادي</option><option>السادس الإعدادي</option></select>
+        </label>
+        <button class="primary" type="submit">إنشاء الحساب</button>
+      </form>
+
+      <form id="teacher" class="form tab-panel hidden">
+        <h2>دخول المدرس</h2>
+        <label>البريد الإلكتروني<input type="email" id="teacherEmail" required placeholder="teacher@example.com"></label>
+        <label>رمز المدرس<input type="password" id="teacherCode" required placeholder="رمز يمنحه مدير النظام"></label>
+        <button class="primary" type="submit">متابعة</button>
+        <p class="hint">دخول المدرسين يحتاج رمزاً يُضبط لاحقاً من لوحة الإدارة.</p>
+      </form>
+      <p id="notice" class="notice" aria-live="polite"></p>
+    </section>
+
+    <section id="portal" class="card hidden">
+      <div class="portal-head">
+        <div><span class="eyebrow">البوابة المدرسية</span><h2 id="welcome">مرحباً</h2></div>
+        <button id="logout" class="light">تسجيل الخروج</button>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-page="home">الرئيسية</button>
+        <button class="nav-btn" data-page="schedule">الجدول</button>
+        <button class="nav-btn" data-page="exams">الامتحانات</button>
+        <button class="nav-btn" data-page="chat">الدردشة</button>
+      </nav>
+      <div id="page-home" class="page">
+        <div class="welcome-box"><h3>أهلاً بك في بوابة إعدادية ميسان</h3><p>تابع جدولك وامتحاناتك وإعلانات المدرسة من مكان واحد.</p></div>
+        <div class="grid">
+          <article class="tile"><span>📅</span><h3>الجدول الدراسي</h3><p>اعرف دروسك اليومية.</p></article>
+          <article class="tile"><span>📝</span><h3>الامتحانات</h3><p>تابع مواعيد الاختبارات.</p></article>
+          <article class="tile"><span>💬</span><h3>الدردشة</h3><p>مساحة تواصل تجريبية.</p></article>
+        </div>
+      </div>
+      <div id="page-schedule" class="page hidden">
+        <h2>الجدول الدراسي</h2>
+        <p class="hint">هذا جدول تجريبي؛ يمكن إضافة جدول المدرسة الحقيقي بعد تزويدي به.</p>
+        <div class="table-wrap"><table><thead><tr><th>اليوم</th><th>الحصة الأولى</th><th>الحصة الثانية</th><th>الحصة الثالثة</th></tr></thead><tbody>
+        <tr><td>الأحد</td><td>—</td><td>—</td><td>—</td></tr><tr><td>الاثنين</td><td>—</td><td>—</td><td>—</td></tr><tr><td>الثلاثاء</td><td>—</td><td>—</td><td>—</td></tr><tr><td>الأربعاء</td><td>—</td><td>—</td><td>—</td></tr><tr><td>الخميس</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody></table></div>
+      </div>
+      <div id="page-exams" class="page hidden"><h2>الامتحانات</h2><div class="empty">لا توجد امتحانات مضافة حالياً.</div></div>
+      <div id="page-chat" class="page hidden">
+        <h2>الدردشة التجريبية</h2>
+        <p class="hint">الرسائل هنا محفوظة على هذا الجهاز فقط، وليست دردشة مباشرة بين المستخدمين.</p>
+        <div id="messages" class="messages"></div>
+        <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="اكتب رسالة..." required><button class="primary">إرسال</button></form>
+      </div>
+    </section>
+  </main>
+  <footer>© إعدادية ميسان للبنين</footer>
+  <script src="app.js"></script>
+</body>
+</html>
